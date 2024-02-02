@@ -1,33 +1,32 @@
 class Solution {
 public:
-    
-    bool search(vector<int>& a, int x) {
-        int l=0,h=a.size()-1;
+    int BS(vector<int>&a,int l,int h,int x){
+        if(l>h){
+            return 0;
+        }
+        int mid=l+(h-l)/2;
         
-        while(l<=h){
-            int mid=l+(h-l)/2;
-            
-            if(a[mid]==x){
-                return true;
-            }
-            if(a[mid]==a[l]&&a[l]==a[h]){
-                l++;h--;
-                continue;
-            }
-            if(a[l]<=a[mid]){
-                if(x>=a[l]&&x<=a[mid]){
-                    h=mid-1;
-                }else{
-                    l=mid+1;
-                }
+        if(a[mid]==x){
+            return 1;
+        }
+        if(a[l]==a[mid]&&a[l]==a[h]){
+            return BS(a,l+1,h-1,x);
+        }
+        if(a[l]<=a[mid]){
+            if((a[l]<=x)&&(x<=a[mid])){
+                return BS(a,l,mid-1,x);
             }else{
-                if(x>=a[mid]&&x<=a[h]){
-                    l=mid+1;
-                }else{
-                    h=mid-1;
-                }
+                return BS(a,mid+1,h,x);
+            }
+        }else{
+            if((a[mid]<=x)&&(x<=a[h])){
+                return BS(a,mid+1,h,x);
+            }else{
+                return BS(a,l,mid-1,x);
             }
         }
-        return false;
+    }
+    bool search(vector<int>& a, int x) {
+        return BS(a,0,a.size()-1,x);
     }
 };
