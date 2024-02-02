@@ -9,10 +9,8 @@ public:
         if(a[mid]!=a[mid-1]&&a[mid]!=a[mid+1]){
             return a[mid];
         }
-        if((mid%2&&a[mid-1]==a[mid])||!(mid%2)&&a[mid]==a[mid+1]){
-            return BS(a,mid+1,h);
-        }
-        return BS(a,l,mid-1);
+        return ((mid%2&&a[mid-1]==a[mid])||!(mid%2)&&a[mid]==a[mid+1])?
+            BS(a,mid+1,h):BS(a,l,mid-1);
         
     }
 
