@@ -9,7 +9,7 @@ public:
 
         if (mid % 2 == 0) {
             if (a[mid] == a[mid + 1]) {
-                return BS(a, mid + 2, h);
+                return BS(a, mid + 1, h);
             } else {
                 return BS(a, l, mid);
             }
