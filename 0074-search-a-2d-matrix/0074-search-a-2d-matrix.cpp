@@ -1,23 +1,19 @@
 class Solution {
 public:
-    int bs(vector<int>a,int l,int h,int v){
+    int bs(vector<vector<int>>a,int l,int h,int k,int col){
         if(l>h){
             return 0;
         }
         int mid=l+(h-l)/2;
-        if(a[mid]==v){
+        int r=mid/col,c=mid%col;
+        if(a[r][c]==k){
             return 1;
-        }else if(a[mid]<v){
-            return bs(a,mid+1,h,v);
+        }else if(a[r][c]<k){
+            return bs(a,mid+1,h,k,col);
         }
-        return bs(a,l,mid-1,v);
+        return bs(a,l,mid-1,k,col);
     }
     bool searchMatrix(vector<vector<int>>& a, int k) {
-        for(int i=0;i<a.size();i++){
-            if(a[i][0]<=k&&k<=a[i][a[i].size()-1]){
-                return bs(a[i],0,a[i].size()-1,k);
-            }
-        }
-        return false;
+        return bs(a,0,(a.size()*a[0].size())-1,k,a[0].size());
     }
 };
