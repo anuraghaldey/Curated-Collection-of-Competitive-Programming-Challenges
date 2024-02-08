@@ -13,7 +13,7 @@ public:
     std::vector<int> findClosestElements(std::vector<int>& arr, int k, int x) {
         int n = arr.size();
         int idx = bs(arr, 0, n - 1, x);
-        std::vector<int> result;
+        vector<int> result;
         int left = idx - 1, right = idx;
         
         while (k--) {
@@ -24,7 +24,7 @@ public:
                 result.push_back(arr[left]);
                 left--;
             } else {
-                if (std::abs(arr[left] - x) <= std::abs(arr[right] - x)) {
+                if (abs(arr[left] - x) <= abs(arr[right] - x)) {
                     result.push_back(arr[left]);
                     left--;
                 } else {
