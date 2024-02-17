@@ -12,9 +12,7 @@ public:
             if((j-i+1)-mx<=k){
                 ans=max(ans,j-i+1);
             }else{
-                while((j-i+1)-mx>k){
-                    mp[s[i++]]--;
-                }
+                mp[s[i++]]--;
             }
             j++;
             
