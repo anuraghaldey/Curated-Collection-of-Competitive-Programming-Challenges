@@ -7,18 +7,26 @@ public:
         int n=a.size();
         while(j<n){
             mp[a[j]]++;
-            
+            if(mp.size()>j-i+1){
+                j++;
+            }
             if(mp.size()==j-i+1){
                 ans=max(ans,j-i+1);
+                j++;
             }
             else if(mp.size()<j-i+1){
-                mp[a[i]]--;
-                if(mp[a[i]]==0){
-                    mp.erase(a[i]);
+                while(mp.size()<j-i+1){
+                    mp[a[i]]--; 
+                    if(mp[a[i]]==0){
+                        mp.erase(a[i]);
+                    }
+                    i++;
                 }
-                i++;
+                j++;
+                
             }
-            j++;
+            
+            
         }
         return ans;
     }
