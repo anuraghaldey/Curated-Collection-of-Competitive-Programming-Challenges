@@ -12,8 +12,7 @@ public:
            while(sum>k){
                sum-=s[i++];
            }
-           ans+=j-i+1;
-           j++;
+           ans+=j++ -i+1;
        }
        return ans;
    }
