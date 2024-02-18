@@ -6,7 +6,7 @@ public:
         if(n==0||m==0||n<m){
             return "";
         }
-        vector<int>mp(256,0);
+        unordered_map<char,int>mp;
         for(int i=0;i<m;i++){
             mp[t[i]]++;
         }
@@ -14,7 +14,7 @@ public:
         int mnln=INT_MAX;
         int count=0;
         while(j<n){
-            if(mp[s[j]]>0){
+            if(mp.find(s[j])!=mp.end()&&mp[s[j]]>0){
                 count++;
             }
             mp[s[j]]--;
@@ -24,7 +24,7 @@ public:
                     ans=i;
                 }
                 mp[s[i]]++;
-                if(mp[s[i]]>0){
+                if(mp.find(s[i])!=mp.end()&&mp[s[i]]>0){
                     count--;
                 }
                 i++;
