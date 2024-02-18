@@ -1,28 +1,24 @@
 class Solution {
 public:
-   int numSubarraysWithSum(vector<int>& a, int k) {
-    int i = 0, j = 0, ans = 0, n = a.size();
-    int one = 0;
-    
-    while (j < n) {
-        one+=a[j];
-        while(i<j&&one>k){
-            one-=a[i++];
-        }
-        if(one==k){
-            int t=i;
-            ans++;
-            while(t<j&&!(a[t])){
-                ans++;
-                t++;
-            }
-        }
-            
-        
-        j++;
-    }
-    
-    return ans;
-}
+   int AM(vector<int>&s,int k){
+       int i=0,j=0,ans=0,sum=0;
+       int n=s.size();
+       if(k<0){
+           return 0;
+       }
+       while(j<n){
+           sum+=s[j];
+           
+           while(sum>k){
+               sum-=s[i++];
+           }
+           ans+=j-i+1;
+           j++;
+       }
+       return ans;
+   }
+   int numSubarraysWithSum(vector<int>& s, int k) {
+        return AM(s,k)-AM(s,k-1);
+   }
 
 };
