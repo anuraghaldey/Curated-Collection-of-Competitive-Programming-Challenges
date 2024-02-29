@@ -41,7 +41,7 @@ public:
             q.push(nullptr);
             lev++;
             if(lev%2){
-                prev=1000002;
+                prev=1e6+2;
             }else{
                 prev = -1;
             }
