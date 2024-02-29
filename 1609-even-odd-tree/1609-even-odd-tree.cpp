@@ -40,7 +40,12 @@ public:
         } else if (!q.empty()) {
             q.push(nullptr);
             lev++;
-            (lev%2?prev=1e6+2:prev=-1);
+            
+            if(lev%2){
+                prev=1e6+2;
+            }else{
+                prev = -1;
+            }
         }
     }
     return true;
