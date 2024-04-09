@@ -16,7 +16,9 @@ public:
             }else if(count(mid,a,b)<n){
                 l=mid+1;
             }else{
-                ans= mid;
+                if(!(mid%a)||!(mid%b)){
+                    return (mid%MOD+MOD)%MOD;
+                }
                 h=mid-1;
             }
         }
