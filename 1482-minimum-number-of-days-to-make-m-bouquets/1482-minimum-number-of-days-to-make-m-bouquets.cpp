@@ -1,24 +1,24 @@
 class Solution {
 public:
     int check(int mid, vector<int>&a, int m, int k) {
-	int n = a.size();
-	int bouquets = 0;
-	int count = 0;
+        int n = a.size();
+        int bouquets = 0;
+        int count = 0;
 
-	for (int i = 0; i < n; i++) {
-		if (a[i] <= mid) {
-			count++;
-			if (count == k) {
-				bouquets++;
-				count = 0;
-			}
-		} else {
-			count = 0;
-		}
+        for (int i = 0; i < n; i++) {
+            if (a[i] <= mid) {
+                count++;
+                if (count == k) {
+                    bouquets++;
+                    count = 0;
+                }
+            } else {
+                count = 0;
+            }
 
-	}
-	return bouquets >= m;
-}
+        }
+        return bouquets >= m;
+    }
     int bs(vector<int>&a,int l,int h,int &ans,int m,int k){
         if(l>h){
             return ans;
