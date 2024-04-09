@@ -1,36 +1,42 @@
 class Solution {
 public:
-    int check(int mid,vector<int>&b,int m,int k){
-        int c=0;
-        int ans=0;
-        for(int i=0;i<b.size();i++){
-            if(b[i]<=mid){
-                c++;
-            }else{
-                if(c){
-                    ans+=(c/k);
-                }
-                c=0;
-            }
-        }
-        ans+=(c/k);
-        return ans>=m;
-    }
-    int BS(vector<int>&b,int l,int h,int m,int k,int &ans){
+    int check(int mid, vector<int>&a, int m, int k) {
+	int n = a.size();
+	int bouquets = 0;
+	int count = 0;
+
+	for (int i = 0; i < n; i++) {
+		if (a[i] <= mid) {
+			count++;
+			if (count == k) {
+				bouquets++;
+				count = 0;
+			}
+		} else {
+			count = 0;
+		}
+
+	}
+	return bouquets >= m;
+}
+    int bs(vector<int>&a,int l,int h,int &ans,int m,int k){
         if(l>h){
             return ans;
         }
         int mid=l+(h-l)/2;
-        if(check(mid,b,m,k)){
+        if(check(mid,a,m,k)){
             ans=mid;
-            return BS(b,l,mid-1,m,k,ans);
+            return bs(a,l,mid-1,ans,m,k);
         }
-        return BS(b,mid+1,h,m,k,ans);
+        return bs(a,mid+1,h,ans,m,k);
     }
-    int minDays(vector<int>& b, int m, int k) {
-        int l=*min_element(b.begin(),b.end());
-        int h=*max_element(b.begin(),b.end());
+    int minDays(vector<int>& a, int m, int k) {
+        int n=a.size();
+        if(m>n/k){
+            return -1;
+        }
+        int l=*min_element(a.begin(),a.end()),h=*max_element(a.begin(),a.end());
         int ans=-1;
-        return BS(b,l,h,m,k,ans);
+        return bs(a,l,h,ans,m,k);
     }
 };
