@@ -6,16 +6,7 @@ public:
         int count = 0;
 
         for (int i = 0; i < n; i++) {
-            if (a[i] <= mid) {
-                count++;
-                if (count == k) {
-                    bouquets++;
-                    count = 0;
-                }
-            } else {
-                count = 0;
-            }
-
+            (a[i]<= mid)?(count++,count == k?(bouquets++,count = 0):0):(count=0);
         }
         return bouquets >= m;
     }
