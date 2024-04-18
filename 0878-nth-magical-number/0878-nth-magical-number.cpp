@@ -3,7 +3,7 @@ const int MOD = (1e9 + 7);
 class Solution {
 public:
     ll count(ll mid,int a,int b){
-        ll tc=mid/a+mid/b-mid/((a*b)/__gcd(a,b));
+        ll tc=mid/a+mid/b-mid/((a*b)/gcd(a,b));
         return tc;
     }
     int nthMagicalNumber(int n, int a, int b) {
