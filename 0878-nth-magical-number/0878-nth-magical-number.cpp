@@ -9,7 +9,7 @@ public:
     int nthMagicalNumber(int n, int a, int b) {
         ll l=2,h=1e15;
         ll ans=-1;
-        while(l<=h){
+       for(int i=0;i<80;i++){
             ll mid=l+(h-l)/2;
             if(count(mid,a,b)>n){
                 h=mid-1;
