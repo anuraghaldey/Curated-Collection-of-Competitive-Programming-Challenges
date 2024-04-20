@@ -1,8 +1,7 @@
 class Solution {
 public:
     bool checkInclusion(string a, string b) {
-        map<char,int>mp1,mp2;
-        
+        unordered_map<char,int>mp1,mp2;
         int k=a.size(),m=b.size();
         if(k>m){
             return 0;
